@@ -25,22 +25,9 @@
   .panel { display: none; padding: 16px; }
   .panel.active { display: block; }
 
-  .tableauPlaceholder {
-    width: 100%;
-    height: 900px;
-  }
+  .viz-container { width: 100%; }
 
-  .tableauPlaceholder object {
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
-  }
-
-  #panel-market .tableauPlaceholder  { height: 1000px; }
-  #panel-roic   .tableauPlaceholder  { height: 900px;  }
-  #panel-bubble .tableauPlaceholder  { height: 768px;  }
-  #panel-quality .tableauPlaceholder { height: 768px;  }
-  #panel-eco    .tableauPlaceholder  { height: 768px;  }
+  tableau-viz { width: 100%; }
 </style>
 </head>
 <body>
@@ -53,84 +40,46 @@
   <button class="tab" onclick="show('eco', this)">Environmental</button>
 </nav>
 
-<div class="panel active" id="panel-market">
-  <div class='tableauPlaceholder'>
-    <noscript><a href='#'><img alt='Competition Analysis' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-MarketAnalysis/CompetitionAnalysis/1_rss.png' style='border:none'/></a></noscript>
-    <object class='tableauViz'>
-      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-      <param name='embed_code_version' value='3'/>
-      <param name='name' value='HexmontQuarterlyReport-MarketAnalysis/CompetitionAnalysis'/>
-      <param name='tabs' value='no'/>
-      <param name='toolbar' value='bottom'/>
-      <param name='height' value='1000'/>
-    </object>
-  </div>
-</div>
+<div class="panel active" id="panel-market"><div id="viz-market" class="viz-container"></div></div>
+<div class="panel" id="panel-roic"><div id="viz-roic" class="viz-container"></div></div>
+<div class="panel" id="panel-bubble"><div id="viz-bubble" class="viz-container"></div></div>
+<div class="panel" id="panel-quality"><div id="viz-quality" class="viz-container"></div></div>
+<div class="panel" id="panel-eco"><div id="viz-eco" class="viz-container"></div></div>
 
-<div class="panel" id="panel-roic">
-  <div class='tableauPlaceholder'>
-    <noscript><a href='#'><img alt='ROIC Dashboard' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-ROIC/ROICDashboard/1_rss.png' style='border:none'/></a></noscript>
-    <object class='tableauViz'>
-      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-      <param name='embed_code_version' value='3'/>
-      <param name='name' value='HexmontQuarterlyReport-ROIC/ROICDashboard'/>
-      <param name='tabs' value='no'/>
-      <param name='toolbar' value='bottom'/>
-      <param name='height' value='900'/>
-    </object>
-  </div>
-</div>
+<script type='module' src='https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
+<script type='module'>
+  const configs = {
+    market:  { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-MarketAnalysis/CompetitionAnalysis',  h: 1000 },
+    roic:    { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-ROIC/ROICDashboard',                  h: 900  },
+    bubble:  { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-BubbleChart/BubbleCharts',            h: 768  },
+    quality: { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-Quality/QualityDashboard',            h: 768  },
+    eco:     { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard', h: 768  },
+  };
 
-<div class="panel" id="panel-bubble">
-  <div class='tableauPlaceholder'>
-    <noscript><a href='#'><img alt='Bubble Charts' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-BubbleChart/BubbleCharts/1_rss.png' style='border:none'/></a></noscript>
-    <object class='tableauViz'>
-      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-      <param name='embed_code_version' value='3'/>
-      <param name='name' value='HexmontQuarterlyReport-BubbleChart/BubbleCharts'/>
-      <param name='tabs' value='no'/>
-      <param name='toolbar' value='bottom'/>
-      <param name='height' value='768'/>
-    </object>
-  </div>
-</div>
+  const loaded = {};
 
-<div class="panel" id="panel-quality">
-  <div class='tableauPlaceholder'>
-    <noscript><a href='#'><img alt='Quality Dashboard' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-Quality/QualityDashboard/1_rss.png' style='border:none'/></a></noscript>
-    <object class='tableauViz'>
-      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-      <param name='embed_code_version' value='3'/>
-      <param name='name' value='HexmontQuarterlyReport-Quality/QualityDashboard'/>
-      <param name='tabs' value='no'/>
-      <param name='toolbar' value='bottom'/>
-      <param name='height' value='768'/>
-    </object>
-  </div>
-</div>
+  function initViz(id) {
+    if (loaded[id]) return;
+    loaded[id] = true;
+    const cfg = configs[id];
+    const container = document.getElementById('viz-' + id);
+    const viz = document.createElement('tableau-viz');
+    viz.setAttribute('src', cfg.url);
+    viz.setAttribute('width', '100%');
+    viz.setAttribute('height', cfg.h);
+    viz.setAttribute('hide-tabs', '');
+    container.appendChild(viz);
+  }
 
-<div class="panel" id="panel-eco">
-  <div class='tableauPlaceholder'>
-    <noscript><a href='#'><img alt='Environmental Dashboard' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard/1_rss.png' style='border:none'/></a></noscript>
-    <object class='tableauViz'>
-      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-      <param name='embed_code_version' value='3'/>
-      <param name='name' value='HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard'/>
-      <param name='tabs' value='no'/>
-      <param name='toolbar' value='bottom'/>
-      <param name='height' value='768'/>
-    </object>
-  </div>
-</div>
-
-<script src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
-<script>
-  function show(id, el) {
+  window.show = function(id, el) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById('panel-' + id).classList.add('active');
     el.classList.add('active');
-  }
+    initViz(id);
+  };
+
+  initViz('market');
 </script>
 </body>
 </html>
