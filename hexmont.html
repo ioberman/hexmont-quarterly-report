@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hexmont Quarterly Report</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a2330; color: #e8edf2; font-family: sans-serif; }
+
+  nav { display: flex; gap: 4px; padding: 12px 16px; background: #131920; border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+  .tab {
+    padding: 6px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #7a8fa6;
+    border: none;
+    background: none;
+  }
+  .tab:hover { color: #e8edf2; }
+  .tab.active { background: #2a3a4d; color: #e8edf2; }
+
+  .panel { display: none; padding: 16px; }
+  .panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<nav>
+  <button class="tab active" onclick="show('market', this)">Market Analysis</button>
+  <button class="tab" onclick="show('roic', this)">ROIC</button>
+  <button class="tab" onclick="show('bubble', this)">Price × Quality</button>
+  <button class="tab" onclick="show('quality', this)">Quality</button>
+  <button class="tab" onclick="show('eco', this)">Environmental</button>
+</nav>
+
+<div class="panel active" id="panel-market">
+  <div class='tableauPlaceholder' style='position:relative;width:100%'>
+    <noscript><a href='#'><img alt='Competition Analysis' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-MarketAnalysis/CompetitionAnalysis/1_rss.png' style='border:none'/></a></noscript>
+    <object class='tableauViz' style='display:none;width:100%'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+      <param name='embed_code_version' value='3'/>
+      <param name='name' value='HexmontQuarterlyReport-MarketAnalysis/CompetitionAnalysis'/>
+      <param name='tabs' value='no'/><param name='toolbar' value='bottom'/>
+    </object>
+  </div>
+</div>
+
+<div class="panel" id="panel-roic">
+  <div class='tableauPlaceholder' style='position:relative;width:100%'>
+    <noscript><a href='#'><img alt='ROIC Dashboard' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-ROIC/ROICDashboard/1_rss.png' style='border:none'/></a></noscript>
+    <object class='tableauViz' style='display:none;width:100%'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+      <param name='embed_code_version' value='3'/>
+      <param name='name' value='HexmontQuarterlyReport-ROIC/ROICDashboard'/>
+      <param name='tabs' value='no'/><param name='toolbar' value='bottom'/>
+    </object>
+  </div>
+</div>
+
+<div class="panel" id="panel-bubble">
+  <div class='tableauPlaceholder' style='position:relative;width:100%'>
+    <noscript><a href='#'><img alt='Bubble Charts' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-BubbleChart/BubbleCharts/1_rss.png' style='border:none'/></a></noscript>
+    <object class='tableauViz' style='display:none;width:100%'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+      <param name='embed_code_version' value='3'/>
+      <param name='name' value='HexmontQuarterlyReport-BubbleChart/BubbleCharts'/>
+      <param name='tabs' value='no'/><param name='toolbar' value='bottom'/>
+    </object>
+  </div>
+</div>
+
+<div class="panel" id="panel-quality">
+  <div class='tableauPlaceholder' style='position:relative;width:100%'>
+    <noscript><a href='#'><img alt='Quality Dashboard' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-Quality/QualityDashboard/1_rss.png' style='border:none'/></a></noscript>
+    <object class='tableauViz' style='display:none;width:100%'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+      <param name='embed_code_version' value='3'/>
+      <param name='name' value='HexmontQuarterlyReport-Quality/QualityDashboard'/>
+      <param name='tabs' value='no'/><param name='toolbar' value='bottom'/>
+    </object>
+  </div>
+</div>
+
+<div class="panel" id="panel-eco">
+  <div class='tableauPlaceholder' style='position:relative;width:100%'>
+    <noscript><a href='#'><img alt='Environmental Dashboard' src='https://public.tableau.com/static/images/He/HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard/1_rss.png' style='border:none'/></a></noscript>
+    <object class='tableauViz' style='display:none;width:100%'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+      <param name='embed_code_version' value='3'/>
+      <param name='name' value='HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard'/>
+      <param name='tabs' value='no'/><param name='toolbar' value='bottom'/>
+    </object>
+  </div>
+</div>
+
+<script src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
+<script>
+  function show(id, el) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    el.classList.add('active');
+  }
+</script>
+</body>
+</html>
