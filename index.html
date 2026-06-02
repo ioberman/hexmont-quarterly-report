@@ -39,6 +39,7 @@
   <button class="tab" onclick="show('bubble', this)">Price × Quality</button>
   <button class="tab" onclick="show('quality', this)">Quality</button>
   <button class="tab" onclick="show('eco', this)">Environmental</button>
+  <button class="tab" onclick="show('country', this)">Country Analysis</button>
 </nav>
 
 <div class="panel active" id="panel-market"><div id="viz-market" class="viz-container"></div></div>
@@ -46,6 +47,7 @@
 <div class="panel" id="panel-bubble"><div id="viz-bubble" class="viz-container"></div></div>
 <div class="panel" id="panel-quality"><div id="viz-quality" class="viz-container"></div></div>
 <div class="panel" id="panel-eco"><div id="viz-eco" class="viz-container"></div></div>
+<div class="panel" id="panel-country"><div id="viz-country" class="viz-container"></div></div>
 
 <script type='module' src='https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
 <script type='module'>
@@ -55,6 +57,7 @@
     bubble:  { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-BubbleChart/BubbleCharts',            h: 768  },
     quality: { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-Quality/QualityDashboard',            h: 768  },
     eco:     { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard', h: 768  },
+    country: { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-CountryAnalysis/CountryAnalysis',     h: 1000 },
   };
 
   const loaded = {};
