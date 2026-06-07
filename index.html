@@ -34,7 +34,8 @@
 <body>
 
 <nav>
-  <button class="tab active" onclick="show('market', this)">Market Analysis</button>
+  <button class="tab active" onclick="show('overviews', this)">Company Overviews</button>
+  <button class="tab" onclick="show('market', this)">Market Analysis</button>
   <button class="tab" onclick="show('roic', this)">ROIC</button>
   <button class="tab" onclick="show('bubble', this)">Price × Quality</button>
   <button class="tab" onclick="show('quality', this)">Quality</button>
@@ -42,7 +43,8 @@
   <button class="tab" onclick="show('country', this)">Country Analysis</button>
 </nav>
 
-<div class="panel active" id="panel-market"><div id="viz-market" class="viz-container"></div></div>
+<div class="panel active" id="panel-overviews"><div id="viz-overviews" class="viz-container"></div></div>
+<div class="panel" id="panel-market"><div id="viz-market" class="viz-container"></div></div>
 <div class="panel" id="panel-roic"><div id="viz-roic" class="viz-container"></div></div>
 <div class="panel" id="panel-bubble"><div id="viz-bubble" class="viz-container"></div></div>
 <div class="panel" id="panel-quality"><div id="viz-quality" class="viz-container"></div></div>
@@ -52,6 +54,7 @@
 <script type='module' src='https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
 <script type='module'>
   const configs = {
+    overviews: { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-CompanyOverviews/CompanyProfile', h: 1100 },
     market:  { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-MarketAnalysis/CompetitionAnalysis',  h: 1000 },
     roic:    { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-ROIC/ROICDashboard',                  h: 900  },
     bubble:  { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-BubbleChart/BubbleCharts',            h: 768  },
@@ -83,7 +86,7 @@
     initViz(id);
   };
 
-  initViz('market');
+  initViz('overviews');
 </script>
 </body>
 </html>
