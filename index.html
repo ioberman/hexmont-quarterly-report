@@ -53,6 +53,8 @@
   <button class="tab" onclick="show('eco', this)">Environmental</button>
   <button class="tab" onclick="show('country', this)">Country Analysis</button>
   <button class="tab" onclick="show('pricetrends', this)">Price Trends</button>
+  <button class="tab" onclick="show('greenroi', this)">Green Spend ROI</button>
+  <button class="tab" onclick="show('qualityroi', this)">Quality Spend ROI</button>
 </nav>
 
 <div class="panel active" id="panel-overviews"><div id="viz-overviews" class="viz-container"></div></div>
@@ -63,6 +65,8 @@
 <div class="panel" id="panel-eco"><div id="viz-eco" class="viz-container"></div></div>
 <div class="panel" id="panel-country"><div id="viz-country" class="viz-container"></div></div>
 <div class="panel" id="panel-pricetrends"><div id="viz-pricetrends" class="viz-container"></div></div>
+<div class="panel" id="panel-greenroi"><div id="viz-greenroi" class="viz-container"></div></div>
+<div class="panel" id="panel-qualityroi"><div id="viz-qualityroi" class="viz-container"></div></div>
 
 <script type='module' src='https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
 <script type='module'>
@@ -75,6 +79,8 @@
     eco:     { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard', h: 768  },
     country: { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-CountryAnalysis/CountryAnalysis',     h: 1000 },
     pricetrends: { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-PriceTrends/CompanyMarketPriceTrend', h: 900 },
+    greenroi:    { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-GreenROI/GreenSpendROIDashboard',      h: 900 },
+    qualityroi:  { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-QualityROI/QualitySpendROIDashboard',  h: 900 },
   };
 
   const loaded = {};
