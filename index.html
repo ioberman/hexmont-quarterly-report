@@ -148,6 +148,7 @@
     <div class="dropdown-menu">
       <div class="dropdown-menu-inner">
         <button class="dropdown-item" onclick="show('market', 'competition', this)">Market Analysis</button>
+        <button class="dropdown-item" onclick="show('profitbubble', 'competition', this)">Competitive Mkt Position</button>
         <button class="dropdown-item" onclick="show('bubble', 'competition', this)">Price × Quality</button>
         <button class="dropdown-item" onclick="show('pricetrends', 'competition', this)">Price Trends</button>
         <button class="dropdown-item" onclick="show('demand', 'competition', this)">Demand by Market</button>
@@ -187,6 +188,7 @@
 <div class="panel active" id="panel-overviews"><div id="viz-overviews" class="viz-container"></div></div>
 <div class="panel" id="panel-market"><div id="viz-market" class="viz-container"></div></div>
 <div class="panel" id="panel-roic"><div id="viz-roic" class="viz-container"></div></div>
+<div class="panel" id="panel-profitbubble"><div id="viz-profitbubble" class="viz-container"></div></div>
 <div class="panel" id="panel-bubble"><div id="viz-bubble" class="viz-container"></div></div>
 <div class="panel" id="panel-quality"><div id="viz-quality" class="viz-container"></div></div>
 <div class="panel" id="panel-eco"><div id="viz-eco" class="viz-container"></div></div>
@@ -202,6 +204,7 @@
     overviews:   { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-CompanyOverviews/CompanyProfile',         h: 1100 },
     market:      { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-MarketAnalysis/CompetitionAnalysis',       h: 1000 },
     roic:        { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-ROIC/ROICDashboard',                       h: 900  },
+    profitbubble:{ url: 'https://public.tableau.com/app/profile/ian.oberman/viz/HexmontQuarterlyReport-CompetitiveMarketPosition/BubbleCharts-Profitability', h: 900  },
     bubble:      { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-BubbleChart/BubbleCharts',                 h: 768  },
     quality:     { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-Quality/QualityDashboard',                 h: 768  },
     eco:         { url: 'https://public.tableau.com/views/HexmontQuarterlyReport-Eco-Friendly/EnvironmentalDashboard',      h: 768  },
